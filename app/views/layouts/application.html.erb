@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rails React Router Example</title>
+    <meta name="description"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">    
+    <base href="<%= RailsReactRouterExample.spa_base %>"></base>
+    <meta content="!" name="fragment"/>
+    <link href="/favicon.ico?v=2" rel="shortcut icon"></link>
+    <%= stylesheet_link_tag 'deps', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+<body>
+
+  <%= yield %>
+  <!--[if IE 8]>
+    <%= javascript_include_tag 'polyfills/es5-shim' %>
+    <%= javascript_include_tag 'polyfills/es5-sham' %>
+    <%= javascript_include_tag 'polyfills/console-polyfill' %>
+    <script src="/assets/respond.js" type="text/javascript"></script>
+    <link href="<%= asset_path('respond-proxy.htm') %>" id="respond-proxy" rel="respond-proxy"></link>
+    <link href="/assets/respond/respond.proxy.gif" id="respond-redirect" rel="respond-redirect"></link>
+    <script src="/assets/respond/respond.proxy.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <!-- include the browserify-compiled CommonJS module -->
+  <%= javascript_include_tag 'commonjs' %>
+  
+  <script>
+    window.commonJS    = require('commonjs');
+    window.$           = window.jQuery = window.commonJS.jquery;
+    var $app           = $('#app');
+
+    window.commonJS.initApp($app[0]);
+  </script>
+</body>
+</html>
