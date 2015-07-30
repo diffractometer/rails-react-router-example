@@ -67,3 +67,5 @@ config/application.yml
 # Ignore application configuration
 /config/application.yml
 
+# Node Modules
+/node_modules
